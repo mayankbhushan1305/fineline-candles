@@ -1,0 +1,413 @@
+/* ==========================================================================
+   1. Core Layout & Base Fixes
+   ========================================================================== */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fffaf7;
+  color: #2c2c2c;
+  line-height: 1.6;
+}
+
+header {
+  background: #111;
+  color: white;
+  padding: 35px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  font-size: 2.4rem;
+}
+
+header p {
+  margin: 0;
+  color: #e89cae;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+/* ==========================================================================
+   2. Main Display Sections
+   ========================================================================== */
+.hero {
+  padding: 80px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, #fdf0f5, #fffaf7);
+}
+
+.hero h2, .section h2 {
+  color: #111; 
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.hero p {
+  max-width: 650px;
+  margin: 0 auto 25px auto;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ==========================================================================
+   3. Multi-Row Fixed 3-Columns Grid Layout
+   ========================================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.img-container {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  background-color: #ffffff;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* ==========================================================================
+   4. Interaction Animation Logic
+   ========================================================================== */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 28px rgba(232, 156, 174, 0.18);
+}
+
+.card:hover .product-img {
+  transform: scale(1.10);
+}
+
+/* ==========================================================================
+   5. Card Typography & Content Details
+   ========================================================================== */
+.card h3 {
+  margin: 8px 0 4px 0;
+  font-size: 1.2rem;
+  color: #111;
+  font-weight: 600;
+}
+
+.card p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.price {
+  font-weight: 600;
+  margin-top: 12px;
+  color: #111;
+  font-size: 1.1rem;
+}
+
+.burn-time {
+  font-size: 0.85rem;
+  color: #e89cae;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.customize-btn {
+  margin-top: 15px;
+  padding: 10px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.customize-btn:hover {
+  background: #e89cae;
+}
+
+/* ==========================================================================
+   6. Dynamic Pop-up Modal & Overlay Layout (FIXED VISIBILITY FONT COLOURS)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-content {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+}
+
+/* Fixed: Heading font color is now visible dark slate gray */
+.modal-content h2 {
+  color: #2c2c2c !important;
+  font-size: 1.8rem;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.modal-content h3 {
+  color: #e89cae;
+  font-size: 1.3rem;
+  margin: 0 0 8px 0;
+  font-weight: 500;
+}
+
+.close-x {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #888;
+  transition: color 0.2s;
+}
+
+.close-x:hover {
+  color: #111;
+}
+
+.modal-base-price {
+  color: #555;
+  margin-top: -5px;
+  margin-bottom: 25px;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #2c2c2c;
+}
+
+/* Fixed: Dropdown main selector text and nested option texts are locked to absolute black */
+.form-group select,
+.form-group select option {
+  color: #000000 !important;
+  background-color: #ffffff !important;
+}
+
+.form-group select {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group select:focus {
+  border-color: #e89cae;
+}
+
+.quantity-counter {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.quantity-counter button {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #111;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.quantity-counter button:hover {
+  background: #fdf0f5;
+  border-color: #e89cae;
+  color: #e89cae;
+}
+
+.quantity-counter span {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #111;
+  min-width: 25px;
+  text-align: center;
+}
+
+.price-calculator {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px dashed #eee;
+}
+
+.price-calculator span {
+  font-size: 1.1rem;
+  color: #2c2c2c;
+  font-weight: 500;
+}
+
+.price-calculator strong {
+  font-size: 1.6rem;
+  color: #e89cae;
+  font-weight: 600;
+}
+
+.submit-custom-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.submit-custom-btn:hover {
+  background: #e89cae;
+}
+
+.submit-custom-btn:active {
+  transform: scale(0.98);
+}
+
+.summary-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #fff;
+  border-left: 5px solid #e89cae;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  padding: 10px 25px;
+  border-radius: 8px;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: #2c2c2c;
+}
+
+.summary-toast button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+}
+
+/* ==========================================================================
+   7. Customization Details & Interactive Buttons
+   ========================================================================== */
+.features {
+  display: grid;
+  gap: 15px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.feature {
+  background: white;
+  border-left: 5px solid #e89cae;
+  padding: 18px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+
+footer {
+  background: #111;
+  color: #aaa;
+  text-align: center;
+  padding: 35px 20px;
+  margin-top: 60px;
+  font-size: 0.9rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #e89cae;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  background: #d48295;
+  transform: scale(1.03);
+}
